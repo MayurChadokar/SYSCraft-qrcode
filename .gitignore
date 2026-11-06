@@ -1,0 +1,30 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+pytest-cache-files-*/
+.venv/
+venv/
+
+# Local runtime data
+*.db
+*.db-shm
+*.db-wal
+uploads/*
+app/static/generated_qr/*
+storage/
+
+# Keep runtime directories available when cloning
+!uploads/.gitkeep
+!app/static/generated_qr/.gitkeep
+
+# Editors and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

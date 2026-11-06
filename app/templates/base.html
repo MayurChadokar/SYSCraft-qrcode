@@ -1,0 +1,24 @@
+<!doctype html><html lang="en" data-theme="light"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}SYSCRAFT QR CODE STUDIO{% endblock %}</title>
+<meta name="description" content="Create genuine, validated QR codes for your company.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/app.css"><script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+</head><body>
+<div class="mobilebar"><a class="brand" href="/"><span class="brandmark">S</span><span class="brandname">SYSCRAFT <small>QR CODE STUDIO</small></span></a><button class="iconbtn" id="menuBtn" aria-label="Open menu">☰</button></div>
+<aside class="sidebar" id="sidebar"><a class="brand" href="/"><span class="brandmark">S</span><span class="brandname">SYSCRAFT <small>QR CODE STUDIO</small></span></a>
+<nav><p class="navlabel">Workspace</p>
+<a class="navitem {% if active=='overview' %}active{% endif %}" href="/"><i data-lucide="layout-dashboard"></i>Overview</a>
+<a class="navitem {% if active=='create' %}active{% endif %}" href="/create"><i data-lucide="qr-code"></i>Create QR Code</a>
+<a class="navitem {% if active=='bulk' %}active{% endif %}" href="/bulk"><i data-lucide="files"></i>Bulk Generator</a>
+<a class="navitem {% if active=='codes' %}active{% endif %}" href="/codes"><i data-lucide="library"></i>My QR Codes</a>
+<a class="navitem {% if active=='templates' %}active{% endif %}" href="/templates"><i data-lucide="layout-template"></i>Templates</a>
+<p class="navlabel">Preferences</p><a class="navitem {% if active=='settings' %}active{% endif %}" href="/settings"><i data-lucide="settings"></i>Settings</a></nav>
+<div class="trust"><span>✓</span><div><b>Integrity checked</b><small>Every QR is decoded before export</small></div></div>
+</aside>
+<main class="shell"><header class="topbar"><div class="search"><i data-lucide="search"></i><input id="globalSearch" placeholder="Search QR codes…" aria-label="Search"></div><div class="topactions"><button class="iconbtn" id="themeBtn" aria-label="Toggle theme"><i data-lucide="sun"></i></button><span class="avatar">MS</span><div class="user"><b>Company Admin</b><small>Administrator</small></div></div></header>
+<div class="page">{% block content %}{% endblock %}</div></main>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="/static/js/app.js"></script>{% block scripts %}{% endblock %}</body></html>
+

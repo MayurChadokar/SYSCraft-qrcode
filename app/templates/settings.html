@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Settings · SYSCRAFT QR CODE STUDIO{% endblock %}{% block content %}
+<div class="pagehead"><div><span class="eyebrow">PREFERENCES</span><h1>Settings</h1><p>Configure your local SYSCRAFT QR CODE STUDIO experience.</p></div></div><section class="panel settings"><h2>Appearance</h2><div class="settingrow"><div><b>Color theme</b><p>Choose the interface that feels most comfortable.</p></div><button class="btn secondary" onclick="document.getElementById('themeBtn').click()">Toggle light / dark</button></div><div class="settingrow"><div><b>Validation policy</b><p>Independent OpenCV decoding at 256, 512, and 1024 pixels.</p></div><span class="securebadge"><i data-lucide="lock"></i>Always enforced</span></div><div class="settingrow"><div><b>Data storage</b><p>QR records and images are stored locally in this deployment.</p></div><span class="pill">SQLite</span></div></section>
+{% endblock %}
+

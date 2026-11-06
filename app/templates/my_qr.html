@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}My QR Codes · SYSCRAFT QR CODE STUDIO{% endblock %}{% block content %}
+<div class="pagehead"><div><span class="eyebrow">LIBRARY</span><h1>My QR codes</h1><p>Manage, rename, validate, and download your codes.</p></div><a class="btn primary" href="/create"><i data-lucide="plus"></i>Create QR code</a></div>
+<div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="librarySearch" placeholder="Search by name…"></div><select id="typeFilter"><option value="">All types</option><option value="url">Website</option><option value="text">Text</option><option value="wifi">Wi-Fi</option><option value="vcard">Contact</option><option value="email">Email</option></select></div><div id="qrLibrary" class="library"></div>
+{% endblock %}{% block scripts %}<script>loadLibrary()</script>{% endblock %}
+
