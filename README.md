@@ -49,11 +49,15 @@ Use PostgreSQL for multi-worker deployments, set a strong secret, restrict proxy
 
 ## Deploy free on Render with SQLite
 
-The included `render.yaml` creates a free Render web service using SQLite under `/tmp/qr-studio`. No external database or payment is required.
+Deploy this application as a normal free Web Service. No Blueprint, external database, persistent disk, or payment is required.
 
-1. In Render, choose **New → Blueprint** and connect this repository.
-2. Render detects `render.yaml`; apply the Blueprint without adding a database.
-3. Wait for `/health` to pass and open the generated `onrender.com` URL.
+1. In Render, choose **New → Web Service**.
+2. Connect the `MayurChadokar/SYSCraft-qrcode` GitHub repository.
+3. Select **Python 3** and the **Free** instance type.
+4. Set the build command to `pip install -r requirements.txt`.
+5. Set the start command to `uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1`.
+6. Add `PYTHON_VERSION=3.12.8`, `DATABASE_URL=sqlite:////tmp/qr-studio/qr_studio.db`, and `DATA_DIR=/tmp/qr-studio` as environment variables.
+7. Set the health check path to `/health`, then create the Web Service.
 
 Free Render services have an ephemeral filesystem. The SQLite database, saved records, generated images, and uploaded logos can reset whenever the service sleeps, restarts, or redeploys. QR generation, validated downloads, and bulk spreadsheet-to-ZIP processing work normally while the instance is running.
 
