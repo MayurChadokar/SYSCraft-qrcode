@@ -15,7 +15,9 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
-        sync: false
+        value: sqlite:////tmp/qr-studio/qr_studio.db
+      - key: DATA_DIR
+        value: /tmp/qr-studio
       - key: MAX_UPLOAD_BYTES
         value: 2097152
       - key: RATE_LIMIT

@@ -47,16 +47,15 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
 
 Use PostgreSQL for multi-worker deployments, set a strong secret, restrict proxy body size, and serve `/static` via a CDN or web server. Uploaded logos are treated as untrusted image data and are never executed.
 
-## Deploy free on Render
+## Deploy free on Render with SQLite
 
-The included `render.yaml` creates a free Render web service. Because free Render services have an ephemeral filesystem, production records use an external free PostgreSQL database instead of SQLite.
+The included `render.yaml` creates a free Render web service using SQLite under `/tmp/qr-studio`. No external database or payment is required.
 
-1. Create a free Supabase or Neon project and copy its PostgreSQL connection string.
-2. In Render, choose **New → Blueprint** and connect this repository.
-3. When Render asks for `DATABASE_URL`, paste the PostgreSQL connection string.
-4. Apply the Blueprint, wait for `/health` to pass, and open the generated `onrender.com` URL.
+1. In Render, choose **New → Blueprint** and connect this repository.
+2. Render detects `render.yaml`; apply the Blueprint without adding a database.
+3. Wait for `/health` to pass and open the generated `onrender.com` URL.
 
-QR previews and downloads are regenerated from database content and do not depend on saved local PNG files. On the free architecture, uploaded center logos are temporary and can disappear when Render sleeps or redeploys. Use QR codes without logos for durable free hosting, or connect external object storage later.
+Free Render services have an ephemeral filesystem. The SQLite database, saved records, generated images, and uploaded logos can reset whenever the service sleeps, restarts, or redeploys. QR generation, validated downloads, and bulk spreadsheet-to-ZIP processing work normally while the instance is running.
 
 ## Integrity policy
 
