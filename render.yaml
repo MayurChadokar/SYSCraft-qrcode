@@ -2,7 +2,7 @@ services:
   - type: web
     name: syscraft-qr-code-studio
     runtime: python
-    plan: starter
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1
     healthCheckPath: /health
@@ -14,15 +14,9 @@ services:
         value: SYSCRAFT QR CODE STUDIO
       - key: SECRET_KEY
         generateValue: true
-      - key: DATA_DIR
-        value: /opt/render/project/src/storage
       - key: DATABASE_URL
-        value: sqlite:////opt/render/project/src/storage/qr_studio.db
+        sync: false
       - key: MAX_UPLOAD_BYTES
         value: 2097152
       - key: RATE_LIMIT
         value: 30/minute
-    disk:
-      name: syscraft-data
-      mountPath: /opt/render/project/src/storage
-      sizeGB: 1
